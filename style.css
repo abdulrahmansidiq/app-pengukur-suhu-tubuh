@@ -1,0 +1,126 @@
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #af0101 0%, #0eab00 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .thermometer-container {
+            position: relative;
+            width: 60px;
+            height: 300px;
+            margin: 0 auto;
+        }
+        
+        .thermometer-bulb {
+            width: 60px;
+            height: 60px;
+            background: #ef4444;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+        }
+        
+        .thermometer-tube {
+            width: 20px;
+            height: 250px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px 10px 0 0;
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .thermometer-mercury {
+            width: 12px;
+            height: 0%;
+            background: linear-gradient(to top, #ef4444, #f97316, #eab308);
+            border-radius: 6px;
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: height 2s ease-in-out;
+        }
+        
+        .pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: .5;
+            }
+        }
+        
+        .scan-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #10b981, transparent);
+            animation: scan 2s linear infinite;
+        }
+        
+        @keyframes scan {
+            0% {
+                top: 0;
+            }
+            100% {
+                top: 100%;
+            }
+        }
+        
+        .temperature-display {
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: -0.05em;
+        }
+        
+        .status-normal {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+        
+        .status-fever {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+        
+        .status-high-fever {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+        }
+        
+        .bounce-in {
+            animation: bounceIn 0.6s ease-out;
+        }
+        
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
