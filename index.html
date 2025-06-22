@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThermoCheck - Pengukur Suhu Tubuh</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="gradient-bg min-h-screen">
+    <!-- Header -->
+    <header class="glass-effect p-6 mb-8">
+        <div class="max-w-2xl mx-auto text-center">
+            <h1 class="text-3xl font-bold text-white mb-2">🌡️ ThermoCheck</h1>
+            <p class="text-white/80">Pengukur Suhu Tubuh Digital</p>
+        </div>
+    </header>
+
+    <div class="max-w-2xl mx-auto px-6 pb-8">
+        <!-- Main Thermometer Display -->
+        <div class="glass-effect rounded-3xl p-8 mb-8 text-center">
+            <div class="thermometer-container mb-8">
+                <div class="thermometer-tube">
+                    <div class="thermometer-mercury" id="mercury"></div>
+                </div>
+                <div class="thermometer-bulb"></div>
+                <div class="scan-line" id="scanLine" style="display: none;"></div>
+            </div>
+            
+            <!-- Temperature Display -->
+            <div class="mb-6">
+                <div class="temperature-display text-white mb-2" id="temperatureDisplay">--.-°C</div>
+                <div class="text-white/70 text-lg" id="temperatureStatus">Siap untuk mengukur</div>
+            </div>
+            
+            <!-- Measurement Button -->
+            <button id="measureBtn" onclick="startMeasurement()" class="bg-white text-purple-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                📏 Mulai Pengukuran
+            </button>
+        </div>
+
+        <!-- History Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            <div class="glass-effect rounded-2xl p-6 text-center">
+                <div class="text-3xl mb-2">📊</div>
+                <div class="text-white text-2xl font-semibold" id="measurementCount">0</div>
+                <div class="text-white/70 text-sm">Total Pengukuran</div>
+            </div>
+            
+            <div class="glass-effect rounded-2xl p-6 text-center">
+                <div class="text-3xl mb-2">🌡️</div>
+                <div class="text-white text-2xl font-semibold" id="averageTemp">--.-°C</div>
+                <div class="text-white/70 text-sm">Rata-rata</div>
+            </div>
+            
+            <div class="glass-effect rounded-2xl p-6 text-center">
+                <div class="text-3xl mb-2">📈</div>
+                <div class="text-white text-2xl font-semibold" id="lastTemp">--.-°C</div>
+                <div class="text-white/70 text-sm">Pengukuran Terakhir</div>
+            </div>
+        </div>
+
+        <!-- Temperature History -->
+        <div class="glass-effect rounded-3xl p-6 mb-8">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-semibold text-white">Riwayat Pengukuran</h2>
+                <button onclick="clearHistory()" class="text-white/70 hover:text-white text-sm font-medium">Hapus Riwayat</button>
+            </div>
+            
+            <div id="historyList" class="space-y-3">
+                <div class="text-center text-white/50 py-8">
+                    <div class="text-4xl mb-4">📋</div>
+                    <p>Belum ada riwayat pengukuran</p>
+                    <p class="text-sm mt-2">Mulai pengukuran untuk melihat riwayat</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Temperature Guide -->
+        <div class="glass-effect rounded-3xl p-6">
+            <h3 class="text-lg font-semibold text-white mb-4">📚 Panduan Suhu Tubuh</h3>
+            <div class="space-y-3">
+                <div class="flex items-center justify-between p-3 bg-white/10 rounded-lg">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-4 h-4 bg-green-400 rounded-full"></div>
+                        <span class="text-white">Normal</span>
+                    </div>
+                    <span class="text-white/80">36.1°C - 37.2°C</span>
+                </div>
+                
+                <div class="flex items-center justify-between p-3 bg-white/10 rounded-lg">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-4 h-4 bg-yellow-400 rounded-full"></div>
+                        <span class="text-white">Demam Ringan</span>
+                    </div>
+                    <span class="text-white/80">37.3°C - 38.0°C</span>
+                </div>
+                
+                <div class="flex items-center justify-between p-3 bg-white/10 rounded-lg">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-4 h-4 bg-orange-400 rounded-full"></div>
+                        <span class="text-white">Demam</span>
+                    </div>
+                    <span class="text-white/80">38.1°C - 39.0°C</span>
+                </div>
+                
+                <div class="flex items-center justify-between p-3 bg-white/10 rounded-lg">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-4 h-4 bg-red-400 rounded-full"></div>
+                        <span class="text-white">Demam Tinggi</span>
+                    </div>
+                    <span class="text-white/80">> 39.0°C</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <script src="main.js"></script>
+</body>
+</html>
